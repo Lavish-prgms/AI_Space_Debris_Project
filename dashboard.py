@@ -90,7 +90,10 @@ uploaded = st.sidebar.file_uploader(
 if uploaded:
     image = Image.open(uploaded).convert("RGB")
 else:
+    try:
     image = Image.open("images/space.jpg").convert("RGB")
+except:
+    image = Image.new("RGB", (900, 500), (5, 10, 25))
 
 img = np.array(image)
 draw = img.copy()
